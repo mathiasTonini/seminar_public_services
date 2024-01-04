@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background for the body */
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadow to header */
+    cursor: pointer;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background-color: #ffffff; /* White background for contrast */
+    color: #333;
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 20px; /* Add space between header and hero section */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1); /* Slight shadow for depth */
+}
+
+.hero-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+button, input[type="button"] {
+    padding: 10px 15px; /* Padding for a larger button */
+    font-size: 16px; /* Font size for readability */
+    color: white; /* Text color */
+    background-color:#45a049; /* Background color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    outline: none; /* Remove default focus outline */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover, input[type="button"]:hover {
+    background-color: #0056b3; /* Darker shade for hover state */
+}
+
+button:focus, input[type="button"]:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, .5); /* Subtle shadow to indicate focus */
+}
+
+footer, .content-wrap:after {
+    height: 50px; /* Footer height */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    text-align: center;
+    line-height: 50px; /* Same as its height */
+}
+
+form {
+    margin-top: 20px;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.content-wrap {
+    min-height: calc(100% - 110px);
+    /* Equal to footer height */
+    margin-bottom: -50px;
+    margin-left: 20px;
+    margin-right: 20px; 
+}
+
+.content-wrap:after {
+    content: "";
+    display: block;
+}
+
+select {
+    padding: 10px 15px; /* Increase padding for larger size */
+    font-size: 16px; /* Larger font size for better readability */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: white; /* Background color */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    outline: none; /* Remove default focus outline */
+    -webkit-appearance: none; /* Removes default styling on iOS */
+    -moz-appearance: none; /* Removes default styling in Firefox */
+    appearance: none;
+    margin: 0; /* Reset any default margin */
+}
+
+/* Optionally, style the arrow down icon */
+select::-ms-expand {
+    display: none; /* For IE11 and below */
+}
+
+/* Style for the focus state */
+select:focus {
+    border-color: #007bff; /* Highlight color when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, .5); /* Subtle shadow to indicate focus */
+}
+
+.seqFinished{
+    opacity: 0.6; /* Reduced opacity for a "disabled" look */
+    background-color: #f0f0f0; /* Lighter background */
+    color: #6c757d; /* Muted text color */
+    pointer-events: none; /* Disables all interactions */
+    text-decoration: line-through; /* Strikethrough to signify completion */
+}
+
+.sequence {
+    border: 1px solid #ddd; /* Subtle border */
+    padding: 15px; /* Padding inside each sequence div */
+    margin-bottom: 20px; /* Space between sequence divs */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* Background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sequence:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.sequence h3 {
+    margin-top: 0; /* Align the title at the top */
+    color: #333; /* Title text color */
+}
+
+.sequence p {
+    color: #666; /* Paragraph text color */
+}
+
+
+.seq_status{
+    color: #333; /* Darker text for better readability */
+    margin: 10px 0; /* Space between paragraphs */
+    line-height: 1.4; /* Line height for better readability */
+}
+
+.seq_user_status{
+    color: #007bff; /* Highlight color for user status */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+.seq_summary{
+    font-style: italic; /* Italicize the summary for distinction */
+}
+/* Additional styling for specific elements inside .sequence as needed */

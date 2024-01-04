@@ -1,0 +1,86 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<body>
+    <h1>Supra-Sequence Collaboration Tool</h1>
+
+    <div class="sequence">
+        <label for="classSelect">Choose a Class:</label>
+        <select id="classSelect" name="classSelect">
+            {% for class_name in sequences_data.keys() %}
+            <option value="{{ class_name }}">{{ class_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="button" value="Select Class" onclick="updateSequencies()">
+    </div>
+    
+
+    <div id="supraSequenceList">
+        {% for sequence in sequences %}
+        <div class="sequence">
+            <h3>{{ sequence.title }}</h3>
+            <p>Status: {{ sequence.status }}</p>
+            {% if sequence.status == 'Not Started'%}
+                <button>Start</button>
+            {% elif sequence.status == 'In Progress' %}
+            <form action="/update_status" method="post">
+                <input type="hidden" name="sequence_title" value="{{ sequence.title }}">
+                <input type="hidden" name="class_name" value="{{ selected_class }}">
+                <input type="hidden" name="new_value" value="Started">
+                <button type="submit" name="action" value="join">Join</button>
+            </form>
+            {% endif %}
+            
+        </div>
+        {% endfor %}
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+    })
+    function updateSequencies(){
+        var className = $("#classSelect").val();   
+            $.ajax({
+                url: '/get_sequences',
+                type: 'POST',
+                data: { class_name: className },
+                success: function(sequences) {
+                    var sequenceList = $('#supraSequenceList');
+                    sequenceList.empty(); // Clear current content
+    
+                    $.each(sequences, function(index, seq) {
+                        var div = $('<div></div>').addClass('sequence');
+                        div.append('<h3>' + seq.title + '</h3>');
+                        div.append('<p class="seq_status">Status: ' + seq.status + '</p>');
+                        div.append('<p class="seq_user_status">Your current status for this sequence: ' + seq.userStatus + '</p>');
+                        div.append('<p class="seq_summary">Summary: ' + seq.summary + '</p>');
+                        if(seq.status == 'Finished'){
+                            div.append('The current sequence has been marked as finished');
+                            div.addClass('seqFinished')
+                        }else{
+                            var form = '<form action="/update_status" method="post">';
+                            form = form + '<input type="hidden" name="sequence_title" value="' + seq.title + '">';
+                            form = form + '<input type="hidden" name="class_name" value="' + className + '">';
+                            if(seq.userStatus == 'In' && seq.status == 'In Progress'){
+                                form = form + '<button type="submit" name="action" value="end">Mark as finished</button>';
+                            }
+                            else if (seq.status == 'Not Started'){
+                               form = form + '<button type="submit" name="action" value="start">Start</button>';
+                            }else if (seq.status == 'In Progress'){
+                               form = form +'<button type="submit" name="action" value="join">Join</button>';
+                            }
+                            form = form +'</form>';
+                            div.append(form)
+                        }   
+                        sequenceList.append(div);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                }
+            });
+    };
+
+</script>
+    
+{% endblock %}      

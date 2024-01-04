@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supra-Sequence Collaboration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+<body>
+    <header onclick="window.location.href='/main'">
+        <h1>Supra-Sequence Collaboration</h1>
+        <p>Enhancing Teacher Communication for Integrated Learning</p>
+        <nav>
+            <ul>
+                <li><a href="/about">About the Project</a></li>
+                <li><a href="/supra-sequences">Supra-Sequences Explained</a></li>
+                <li><a href="/tool">The Tool</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/community">Community</a></li>
+                <li><a href="/news">News and Updates</a></li>
+                <li><a href="/support">Support and Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content-wrap">
+        {% block content %}
+        <!-- This block will be replaced by page-specific content -->
+        {% endblock %}
+    </div>
+
+
+    <footer>
+        <p>Contact us at info@suprasequence.edu</p>
+        <!-- Social media links
+        <form>
+            <label for="newsletter">Subscribe to our Newsletter:</label>
+            <input type="email" id="newsletter" name="newsletter">
+            <button type="submit">Subscribe</button>
+        </form> -->
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
